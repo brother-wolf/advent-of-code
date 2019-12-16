@@ -1,5 +1,3 @@
-extern crate itertools;
-
 use advent_of_code_2019_rust::helpers::files::read_file;
 use advent_of_code_2019_rust::helpers::converters::to_usize;
 use advent_of_code_2019_rust::day2::compute::compute;

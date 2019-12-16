@@ -1,5 +1,3 @@
-extern crate itertools;
-
 use advent_of_code_2019_rust::day3::geometry::Point;
 use advent_of_code_2019_rust::helpers::files::read_file;
 use advent_of_code_2019_rust::day3::generators::{build_path_from, find_intersection_points, manhattan_distance, ManhattanDistance};

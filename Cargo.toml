@@ -24,6 +24,5 @@ name = "day3-part1"
 path = "src/day3/day3-part1.rs"
 
 [dependencies]
-itertools = "0.8.2"
 enum_derive = "0.1.7"
 custom_derive = "0.1.7"
