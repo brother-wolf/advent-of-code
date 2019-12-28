@@ -42,6 +42,10 @@ impl Vector {
         println!("next: [{},{}] (+) self: [{},{}] -> result: [{},{}]", next.x, next.y, self.x, self.y, vector.x, vector.y);
         vector
     }
+
+    pub fn new(x: isize, y: isize) -> Vector {
+        Vector{x,y}
+    }
 }
 
 #[derive(Clone,Copy,Debug,PartialEq)]
@@ -51,10 +55,15 @@ pub struct Point {
 }
 
 impl Point {
-
+    pub fn manhattan_distance(&self) -> isize {
+        self.x.abs() + self.y.abs()
+    }
+    pub fn new(x: isize, y: isize) -> Point {
+        Point {x, y}
+    }
 }
 
-#[derive(Debug,PartialEq)]
+#[derive(Clone,Debug,PartialEq)]
 pub struct Line {
     pub a: Point,
     pub b: Point,
@@ -62,7 +71,7 @@ pub struct Line {
     pub range: Vec<isize>,
 }
 
-#[derive(Debug,PartialEq)]
+#[derive(Clone,Debug,PartialEq)]
 pub enum Orientation {
     Horizontal,
     Vertical,
@@ -126,6 +135,14 @@ impl Line {
                 }
             } else { None }
         } else { None }
+    }
+
+    pub fn distance(&self) -> f32 {
+        self.distance_to(self.b)
+    }
+
+    pub fn distance_to(&self, point: Point) -> f32 {
+        (((point.x - self.a.x).pow(2) + (point.y - self.a.y).pow(2)) as f32).sqrt().abs()
     }
 }
 
@@ -220,4 +237,21 @@ fn direction_returned_correctly() {
     assert_eq!(Direction::from('L').unwrap(), Direction::Left);
     assert_eq!(Direction::from('R').unwrap(), Direction::Right);
     assert!(Direction::from('x').is_none());
+}
+
+#[test]
+fn lines_distance_should_be_calculated_correctly() {
+    let up = Line::new(Point{x: 1, y: 1}, Point {x: 1, y: 12});
+    let right = Line::new(Point{x: 2, y: 1}, Point {x: 10, y: 1});
+    let up_and_right = Line::new(Point{x: 7, y: 8}, Point {x: 10, y: 12});
+    let down = Line::new(Point{x: 1, y: 1}, Point {x: 1, y: -12});
+    let left = Line::new(Point{x: 2, y: 1}, Point {x: -10, y: 1});
+    let down_and_left = Line::new(Point{x: 7, y: 8}, Point {x: 4, y: 4});
+
+    assert_eq!(up.distance(), 11f32);
+    assert_eq!(right.distance(), 8f32);
+    assert_eq!(up_and_right.distance(), 5f32);
+    assert_eq!(down.distance(), 13f32);
+    assert_eq!(left.distance(), 12f32);
+    assert_eq!(down_and_left.distance(), 5f32);
 }

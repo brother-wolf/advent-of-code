@@ -9,10 +9,10 @@ fn main() {
     let wire_1 = lines[0].split(",").collect::<Vec<&str>>();
     let wire_2 = lines[1].split(",").collect::<Vec<&str>>();
 
-    let closest_point = process(wire_1, wire_2);
+    let closest_intersection = process(wire_1, wire_2);
 
-    match closest_point {
-        Some(closest_intersection) => println!("Manhattan distance: {}", closest_intersection.point.manhattan_distance()),
+    match closest_intersection {
+        Some(closest_intersection) => println!("num steps: {}", closest_intersection.steps),
         None => println!("No intersection"),
     }
 }
@@ -23,10 +23,11 @@ fn process(input_1: Vec<&str>, input_2: Vec<&str>) -> Option<Intersection> {
     let wire_2 = build_path_from(input_2);
 
     let mut last: Vec<Intersection> = find_intersection_points(&wire_1, &wire_2);
-    last.sort_by(|a, b| b.point.manhattan_distance().cmp(&a.point.manhattan_distance()));
 
+    last.sort_by(|a, b| b.steps.cmp(&a.steps));
+    &last.iter().for_each(|p| println!("{:?}", p));
     match last.last() {
-        Some(inter) => Some(Intersection{steps: inter.steps , point: inter.point}),
+        Some(steps) => Some((*steps).clone()),
         None => None
     }
 }
@@ -34,12 +35,11 @@ fn process(input_1: Vec<&str>, input_2: Vec<&str>) -> Option<Intersection> {
 
 #[test]
 fn example_one_process() {
-    let expected = Point {x:3, y:3};
-
+    let expected = Intersection { steps: 30, point: Point {x:6, y:5} };
     let wire_1 = vec!["R8","U5","L5","D3"];
     let wire_2 = vec!["U7","R6","D4","L4"];
     let actual = process(wire_1, wire_2);
     assert!(actual.is_some());
-    assert_eq!(actual.unwrap().point, expected);
+    assert_eq!(actual.unwrap(), expected);
 }
 
