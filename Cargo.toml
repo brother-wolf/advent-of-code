@@ -27,6 +27,10 @@ path = "src/day3/day3-part1.rs"
 name = "day3-part2"
 path = "src/day3/day3-part2.rs"
 
+[[bin]]
+name = "day4-part1"
+path = "src/day4/day4-part1.rs"
+
 [dependencies]
 enum_derive = "0.1.7"
 custom_derive = "0.1.7"
