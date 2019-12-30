@@ -45,9 +45,9 @@ fn main() {
 
 #[test]
 fn sample_passcodes() {
-    assert!(is_passcode(111111), "Should be valid: double 11, never decreases");
-    assert!(!is_passcode(223450), "Should be invalid: decreasing pair of digits 50");
-    assert!(!is_passcode(123789), "Should be invalid: no double");
+    assert!(is_passcode(112233), "should meet these criteria because the digits never decrease and all repeated digits are exactly two digits long");
+    assert!(!is_passcode(123444), "should no longer meets the criteria (the repeated 44 is part of a larger group of 444");
+    assert!(is_passcode(111122), "should meet the criteria (even though 1 is repeated more than twice, it still contains a double 22");
 }
 
 #[test]
