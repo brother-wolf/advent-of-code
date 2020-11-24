@@ -1,0 +1,11 @@
+[package]
+name = "advent-of-code-2020-rust"
+version = "0.1.0"
+edition = "2018"
+
+[[bin]]
+name = "2020-day1-part1"
+path = "src/day1/day1-part1.rs"
+
+
+[dependencies]

@@ -4,35 +4,35 @@ version = "0.1.0"
 edition = "2018"
 
 [[bin]]
-name = "day1-part1"
+name = "2019-day1-part1"
 path = "src/day1/day1-part1.rs"
 
 [[bin]]
-name = "day1-part2"
+name = "2019-day1-part2"
 path = "src/day1/day1-part2.rs"
 
 [[bin]]
-name = "day2-part1"
+name = "2019-day2-part1"
 path = "src/day2/day2-part1.rs"
 
 [[bin]]
-name = "day2-part2"
+name = "2019-day2-part2"
 path = "src/day2/day2-part2.rs"
 
 [[bin]]
-name = "day3-part1"
+name = "2019-day3-part1"
 path = "src/day3/day3-part1.rs"
 
 [[bin]]
-name = "day3-part2"
+name = "2019-day3-part2"
 path = "src/day3/day3-part2.rs"
 
 [[bin]]
-name = "day4-part1"
+name = "2019-day4-part1"
 path = "src/day4/day4-part1.rs"
 
 [[bin]]
-name = "day4-part2"
+name = "2019-day4-part2"
 path = "src/day4/day4-part2.rs"
 
 [dependencies]
