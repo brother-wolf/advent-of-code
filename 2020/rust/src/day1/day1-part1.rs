@@ -1,21 +1,9 @@
-use std::{
-    fs::File,
-    io::{self, BufRead, BufReader},
-    path::Path,
-};
-use std::str::FromStr;
+use std::io;
 
-fn lines_from_file(filename: impl AsRef<Path>) -> io::Result<Vec<String>> {
-    BufReader::new(File::open(filename)?).lines().collect()
-}
+use advent_of_code_2020_rust::utils::file::load_integers_from_file;
 
-
-fn main() {
-    let mut lines = lines_from_file("data/day1/part1.txt")
-        .expect("Could not load lines")
-        .iter()
-        .map(|s| isize::from_str(s).unwrap())
-        .collect::<Vec<isize>>();
+fn main() -> io::Result<()> {
+    let mut lines = load_integers_from_file("data/day1/part1.txt")?;
     lines.sort();
 
     let mut ans = (0,0);
@@ -31,4 +19,5 @@ fn main() {
     }
 
     println!("{:?}", ans.0 * ans.1 );
+    Ok(())
 }

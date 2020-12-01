@@ -1,34 +1,47 @@
-use std::{
-    fs::File,
-    io::{self, BufRead, BufReader},
-    path::Path,
-};
-use std::str::FromStr;
+use std::io;
 
-fn lines_from_file(filename: impl AsRef<Path>) -> io::Result<Vec<String>> {
-    BufReader::new(File::open(filename)?).lines().collect()
+use advent_of_code_2020_rust::utils::file::load_integers_from_file;
+
+fn main() -> io::Result<()> {
+    let mut lines = load_integers_from_file("data/day1/part1.txt")?;
+    lines.sort();
+    let ints = lines.clone();
+    let mut ans = (0,0,0);
+    for l in &ints {
+        match get_pair_for_total(2020 - l, &ints) {
+            Ok(pair) => {
+                ans = (*l, pair.0, pair.1);
+                break;
+            },
+            Err(_) => (),
+        }
+    }
+
+    println!("{} + {} + {} = {}", ans.0, ans.1, ans.2, ans.0 + ans.1 + ans.2);
+    println!("{} * {} * {} = {}", ans.0, ans.1, ans.2, ans.0 * ans.1 * ans.2);
+
+    Ok(())
 }
 
-
-fn main() {
-    let mut lines = lines_from_file("data/day1/part1.txt")
-        .expect("Could not load lines")
-        .iter()
-        .map(|s| isize::from_str(s).unwrap())
-        .collect::<Vec<isize>>();
-    lines.sort();
-
-    let mut ans = (0,0);
+fn get_pair_for_total(target: isize, lines: &Vec<isize>) -> Result<(isize, isize), String> {
     for l in lines.iter() {
-        let search_term = 2020 - l;
+        let search_term = target - l;
         match lines.binary_search(&search_term) {
             Ok(pair) => {
-                ans = (*l, lines[pair]);
-                break;
+                return Ok((*l, lines[pair]))
             },
             Err(_e) => (),
         }
     }
+    Err(String::from("No Result"))
+}
 
-    println!("{:?}", ans.0 * ans.1 );
+
+#[test]
+fn get_pair_for_total_should_return_the_same_as_part_1() {
+    let mut lines = load_integers_from_file("data/day1/part1.txt").unwrap();
+    lines.sort();
+    let actual = get_pair_for_total(2020, &mut lines).unwrap();
+
+    assert_eq!(actual.0 * actual.1, 121396);
 }
