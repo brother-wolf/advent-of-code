@@ -3,7 +3,7 @@ use std::io;
 use advent_of_code_2020_rust::utils::file::load_integers_from_file;
 
 fn main() -> io::Result<()> {
-    let mut lines = load_integers_from_file("data/day1/part1.txt")?;
+    let mut lines = load_integers_from_file("data/day1.txt")?;
     lines.sort();
     let ints = lines.clone();
     let mut ans = (0,0,0);
@@ -39,7 +39,7 @@ fn get_pair_for_total(target: isize, lines: &Vec<isize>) -> Result<(isize, isize
 
 #[test]
 fn get_pair_for_total_should_return_the_same_as_part_1() {
-    let mut lines = load_integers_from_file("data/day1/part1.txt").unwrap();
+    let mut lines = load_integers_from_file("data/day1.txt").unwrap();
     lines.sort();
     let actual = get_pair_for_total(2020, &mut lines).unwrap();
 
