@@ -19,5 +19,13 @@ path = "src/day2_part1.rs"
 name = "2020-day2-part2"
 path = "src/day2_part2.rs"
 
+[[bin]]
+name = "2020-day3-part1"
+path = "src/day3_part1.rs"
+
+[[bin]]
+name = "2020-day3-part2"
+path = "src/day3_part2.rs"
+
 [dependencies]
 regex = "1"
