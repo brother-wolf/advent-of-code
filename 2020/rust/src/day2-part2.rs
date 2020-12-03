@@ -22,9 +22,9 @@ impl PasswordChecker for TobogganCorporatePolicy {
 
 #[test]
 fn password_test() {
-    assert!(TobogganCorporatePolicy{}.is_password_valid("abcde", 'a', 1, 3 ));
-    assert!( ! TobogganCorporatePolicy{}.is_password_valid("cdefg", 'b', 1, 3 ));
-    assert!( ! TobogganCorporatePolicy{}.is_password_valid("ccccccccc", 'c', 2, 9 ));
+    assert!(TobogganCorporatePolicy.is_password_valid("abcde", 'a', 1, 3 ));
+    assert!( ! TobogganCorporatePolicy.is_password_valid("cdefg", 'b', 1, 3 ));
+    assert!( ! TobogganCorporatePolicy.is_password_valid("ccccccccc", 'c', 2, 9 ));
 }
 
 

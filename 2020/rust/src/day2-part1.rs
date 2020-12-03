@@ -25,13 +25,13 @@ impl PasswordChecker for SledRentalPolicy {
 
 #[test]
 fn password_test() {
-    assert!(SledRentalPolicy{}.is_password_valid("abcde", 'a', 1, 3 ));
-    assert!(!SledRentalPolicy{}.is_password_valid("cdefg", 'b', 1, 3 ));
-    assert!(SledRentalPolicy{}.is_password_valid("ccccccccc", 'c', 2, 9 ));
+    assert!(SledRentalPolicy.is_password_valid("abcde", 'a', 1, 3 ));
+    assert!(!SledRentalPolicy.is_password_valid("cdefg", 'b', 1, 3 ));
+    assert!(SledRentalPolicy.is_password_valid("ccccccccc", 'c', 2, 9 ));
 
-    assert!(SledRentalPolicy{}.is_password_valid("aaa", 'a', 1, 4 ));
-    assert!(!SledRentalPolicy{}.is_password_valid("aaa", 'f', 1, 3 ));
-    assert!(SledRentalPolicy{}.is_password_valid("aad", 'a', 0, 3 ));
+    assert!(SledRentalPolicy.is_password_valid("aaa", 'a', 1, 4 ));
+    assert!(!SledRentalPolicy.is_password_valid("aaa", 'f', 1, 3 ));
+    assert!(SledRentalPolicy.is_password_valid("aad", 'a', 0, 3 ));
 }
 
 
