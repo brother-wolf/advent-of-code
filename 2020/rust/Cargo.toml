@@ -5,19 +5,19 @@ edition = "2018"
 
 [[bin]]
 name = "2020-day1-part1"
-path = "src/day1-part1.rs"
+path = "src/day1_part1.rs"
 
 [[bin]]
 name = "2020-day1-part2"
-path = "src/day1-part2.rs"
+path = "src/day1_part2.rs"
 
 [[bin]]
 name = "2020-day2-part1"
-path = "src/day2-part1.rs"
+path = "src/day2_part1.rs"
 
 [[bin]]
 name = "2020-day2-part2"
-path = "src/day2-part2.rs"
+path = "src/day2_part2.rs"
 
 [dependencies]
 regex = "1"
