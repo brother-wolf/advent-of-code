@@ -41,10 +41,7 @@ impl DetailedValidDocCounter {
             },
             "hcl" => {
                 let colour_re = Regex::new(r"^#([a-f0-9]+)$").unwrap();
-                match colour_re.captures_iter(value).next() {
-                    Some(_) => true,
-                    None => false,
-                }
+                colour_re.captures_iter(value).next().is_some()
             },
             "ecl" => ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"].contains(&value),
             "pid" => value.len() == 9 && usize::from_str(&value).is_ok(),
