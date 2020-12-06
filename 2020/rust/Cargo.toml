@@ -35,5 +35,11 @@ path = "src/day4_part1.rs"
 name = "2020-day4-part2"
 path = "src/day4_part2.rs"
 
+[[bin]]
+name = "2020-day5-part1"
+path = "src/day5_part1.rs"
+
 [dependencies]
 regex = "1"
+itertools = "0.9.0"
+slice-group-by = "0.2.6"
