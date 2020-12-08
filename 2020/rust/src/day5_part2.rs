@@ -16,7 +16,7 @@ fn main() -> io::Result<()> {
                 !taken_seats.contains(&(*seat + 1))
         }
     })
-        .map(|(idx, seat)| *seat + 1)
+        .map(|(_, seat)| *seat + 1)
         .collect::<Vec<usize>>();
     println!("{:?}", possibles);
     Ok(())
