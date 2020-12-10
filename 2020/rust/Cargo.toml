@@ -51,7 +51,12 @@ path = "src/day6_part1.rs"
 name = "2020-day6-part2"
 path = "src/day6_part2.rs"
 
+[[bin]]
+name = "2020-day7-part1"
+path = "src/day7_part1.rs"
+
 [dependencies]
 regex = "1"
 itertools = "0.9.0"
 slice-group-by = "0.2.6"
+petgraph = "0.5.1"
