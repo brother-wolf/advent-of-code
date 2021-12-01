@@ -14,7 +14,7 @@ fn process(code: &str, max: usize, lower: char, upper: char) -> usize {
     for c in code.chars() {
         if c == upper {min = min + ((mx - min) / 2)}
         else if c == lower { mx = mx - ((mx - min) / 2) }
-        else {  panic!(format!("Should not have got anything other than an F or B, got '{}'", c))}
+        else {  panic!("Should not have got anything other than an F or B, got '{}'", c)}
     };
     mx - 1
 }
