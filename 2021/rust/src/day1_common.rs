@@ -1,17 +1,16 @@
+use itertools::Itertools;
+
 pub fn speed_of_depth_increase(sea_floor_depths: Vec<isize>) -> isize {
-    if sea_floor_depths.len() == 0 { return 0; }
-    let (head, tail) = sea_floor_depths.split_at(1);
-    tail.iter().fold((0, head.first().unwrap()), |(acc, last_depth), curr_depth| {
-        if curr_depth > last_depth { (acc + 1, curr_depth) } else { (acc, curr_depth) }
-    }).0
+    sea_floor_depths.iter()
+        .tuple_windows::<(_, _)>()
+        .fold(0, | acc, (lhs, rhs)|acc + ((lhs < rhs) as isize))
 }
 
 pub fn windowed_depths(sea_floor_depths: Vec<isize>, window_size: usize) -> Vec<isize> {
-    if sea_floor_depths.len() < window_size { return vec![]; }
-    (window_size..= sea_floor_depths.len()).fold(vec![], |mut acc, idx|{
-        acc.push(sea_floor_depths.split_at(idx - window_size).1.split_at(window_size).0.iter().sum());
-        acc
-    })
+    sea_floor_depths
+        .windows(window_size)
+        .map(|a| a.iter().sum())
+        .collect()
 }
 
 #[test]
@@ -35,7 +34,7 @@ fn decreasing_readings_should_return_zero_depth_count() {
 }
 
 #[test]
-fn increasing_readings_should_return_zero_depth_count() {
+fn increasing_readings_should_return_depth_count() {
     assert_eq!(1, speed_of_depth_increase(vec![197, 198]));
 }
 
