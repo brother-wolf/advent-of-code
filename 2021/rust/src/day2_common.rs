@@ -19,3 +19,25 @@ pub fn parse_data(directions: &Vec<&str>) -> Vec<(isize, isize)> {
         }).collect()
 }
 
+#[test]
+fn should_map_directions_to_coords() {
+    let directions = vec![
+        "forward 5",
+        "down 5",
+        "forward 8",
+        "up 3",
+        "down 8",
+        "forward 2",
+    ];
+
+    let expected = vec![
+         (0, 5),
+         (5, 0),
+         (0, 8),
+         (-3, 0),
+         (8, 0),
+         (0, 2),
+    ];
+
+    assert_eq!(expected, parse_data(&directions));
+}
