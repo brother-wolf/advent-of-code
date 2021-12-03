@@ -2,7 +2,7 @@ use itertools::Itertools;
 
 pub fn speed_of_depth_increase(sea_floor_depths: Vec<isize>) -> isize {
     sea_floor_depths.iter()
-        .tuple_windows::<(_, _)>()
+        .tuple_windows()
         .fold(0, | acc, (lhs, rhs)|acc + (lhs < rhs) as isize)
 }
 
