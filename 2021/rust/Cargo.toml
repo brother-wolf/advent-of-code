@@ -15,6 +15,9 @@ path = "src/day1_part2.rs"
 name = "2021-day2-part1"
 path = "src/day2_part1.rs"
 
+[[bin]]
+name = "2021-day2-part2"
+path = "src/day2_part2.rs"
+
 [dependencies]
-num = "0.4.0"
 itertools = "0.10.1"
