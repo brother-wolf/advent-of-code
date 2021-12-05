@@ -28,7 +28,6 @@ fn example() {
         "forward 2",
     ];
     let data= parse_data(&directions);
-    &data.iter().for_each(|(y, x)| println!("({}, {})", y, x));
     let (y, x, _) = calc_position_depth_and_aim(&data);
     assert_eq!((60, 15, 900), (y, x, y*x));
 }
