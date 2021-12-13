@@ -1,4 +1,3 @@
-
 use advent_of_code_2021_rust::utils::file::lines_from_file;
 
 fn bin_to_dec(binary: &Vec<usize>) -> usize {
@@ -6,7 +5,6 @@ fn bin_to_dec(binary: &Vec<usize>) -> usize {
         val * 2_usize.pow(idx as u32)
     ).sum()
 }
-
 
 fn analyse_diagnostics(diagnostics_report: Vec<&str>) -> (usize, usize, usize) {
     let min_len = diagnostics_report.iter().last().unwrap().len();
@@ -32,18 +30,9 @@ fn main() {
 #[test]
 fn example() {
     let diagnostic_report = vec![
-        "00100",
-        "11110",
-        "10110",
-        "10111",
-        "10101",
-        "01111",
-        "00111",
-        "11100",
-        "10000",
-        "11001",
-        "00010",
-        "01010",
+        "00100", "11110", "10110", "10111",
+        "10101", "01111", "00111", "11100",
+        "10000", "11001", "00010", "01010",
     ];
 
     let (gamma, epsilon, power_consumption) = analyse_diagnostics(diagnostic_report);
